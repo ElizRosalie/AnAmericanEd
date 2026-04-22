@@ -1,286 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Full Credits — An American Education</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Libre+Baskerville:ital@0;1&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credits — An American Education</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #0d0c0a;
-      --warm-white: #f2ede4;
-      --gold: #d4922a;
-      --maroon: #6e1c2e;
-      --maroon-light: rgba(110,28,46,0.18);
-      --muted: #8a8070;
-      --line: rgba(242,237,228,0.15);
+      --white:  #f7f5f1;
+      --black:  #161412;
+      --mid:    #5a5550;
+      --rule:   #ccc7bf;
+      --accent: #b04a2a;
+      --pale:   #eeebe5;
+      --nav-h:  56px;
     }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--white); color: var(--black); font-family: 'Fira Sans', sans-serif; font-weight: 400; font-size: 17px; line-height: 1.65; overflow-x: hidden; }
 
-    body {
-      background: var(--black);
-      color: var(--warm-white);
-      font-family: 'Libre Baskerville', serif;
-      font-size: 15px;
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: var(--black); display: flex; align-items: center; justify-content: flex-start; gap: 3rem; padding: 0 2.5rem; z-index: 900; }
+    .nav-brand { font-family: 'Fira Sans Condensed', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); text-decoration: none; }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,245,241,0.85); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.4rem 5vw;
-      background: rgba(13,12,10,0.97);
-      border-bottom: 1px solid var(--line);
-    }
+    .page-header { margin-top: var(--nav-h); padding: 5rem 2.5rem 4rem; background: var(--black); color: var(--white); border-bottom: 1px solid #2a2520; }
+    .page-header .label { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 1rem; }
+    .page-header h1 { font-family: 'Fira Sans Condensed', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: 0.01em; }
 
-    .nav-title {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--warm-white);
-      text-decoration: none;
-      opacity: 0.8;
-    }
+    .credits-body { max-width: 780px; margin: 0 auto; padding: 5rem 2.5rem 6rem; }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+    /* DEDICATION */
+    .dedication { text-align: center; padding: 3rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 4rem; }
+    .ded-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); display: block; margin-bottom: 1.2rem; }
+    .ded-name { font-family: 'Fira Sans Condensed', sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1.4; }
+    .ded-years { font-size: 0.9rem; font-weight: 400; color: var(--mid); display: block; margin-top: 0.15rem; }
+    .ded-and { font-size: 0.85rem; color: var(--mid); margin: 0.9rem 0; }
 
-    .nav-links a {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.68rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--warm-white);
-      text-decoration: none;
-      opacity: 0.65;
-      transition: opacity 0.2s;
-    }
+    /* SECTION HEADING */
+    .credits-section { font-family: 'Fira Sans Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem; margin: 3.5rem 0 2rem; }
 
-    .nav-links a:hover { opacity: 1; }
-    .nav-links a.active { opacity: 1; color: var(--gold); }
+    /* CREDIT ROW */
+    .credit { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; margin-bottom: 1.5rem; align-items: baseline; }
+    .credit-role { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); padding-top: 0.1rem; }
+    .credit-names { font-size: 1rem; font-weight: 400; line-height: 1.75; color: var(--black); }
+    .credit-names strong { font-weight: 600; }
 
-    /* ── PAGE HEADER ── */
-    .page-header {
-      padding: 14rem 8vw 5rem;
-      max-width: 900px;
-      margin: 0 auto;
-      animation: fadeUp 1.2s 0.2s both ease-out;
-    }
+    /* CONFIRM BADGE */
+    .confirm { display: inline-block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: #fff3cd; color: #7a5c00; border: 1px solid #e0c050; padding: 0.1rem 0.4rem; margin-left: 0.4rem; vertical-align: middle; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    /* THANK YOU LIST */
+    .thankyou-cols { columns: 2; column-gap: 3rem; font-size: 0.9rem; line-height: 2.1; }
 
-    .page-eyebrow {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
+    /* SUPPORT BOX */
+    .support-box { background: var(--pale); padding: 2.5rem; margin-top: 1rem; font-size: 0.95rem; line-height: 2; }
 
-    .page-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      font-weight: 400;
-      line-height: 1.05;
-    }
+    /* ARCHIVAL LIST */
+    .archival-list { font-size: 0.9rem; line-height: 1.6; }
+    .archival-list li { list-style: none; border-bottom: 1px solid var(--rule); padding: 0.65rem 0; }
 
-    .page-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
+    /* COPYRIGHT */
+    .copyright { margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--rule); text-align: center; }
+    .copyright p { font-size: 0.8rem; font-weight: 500; color: var(--mid); max-width: none; margin-bottom: 0.4rem; }
 
-    /* ── CREDITS BODY ── */
-    .credits-body {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 8vw 8rem;
-    }
+    footer { background: var(--black); color: rgba(247,245,241,0.4); padding: 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; border-top: 1px solid #2a2520; }
+    footer a { color: rgba(247,245,241,0.4); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+    footer nav { display: flex; gap: 2rem; }
 
-    .credits-divider {
-      width: 48px;
-      height: 2px;
-      background: var(--maroon);
-      margin-bottom: 4rem;
-      animation: fadeUp 1.2s 0.5s both ease-out;
-    }
-
-    /* Each credit group */
-    .credit-group {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 0.5rem 3rem;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--line);
-      animation: fadeUp 1s ease both;
-    }
-
-    .credit-group:first-of-type { border-top: 1px solid var(--line); }
-
-    .credit-role {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      padding-top: 0.15rem;
-      line-height: 1.8;
-    }
-
-    .credit-names {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--warm-white);
-      line-height: 1.8;
-    }
-
-    /* Coming soon placeholder */
-    .coming-soon {
-      margin-top: 4rem;
-      padding: 2.5rem;
-      background: var(--maroon-light);
-      border-left: 3px solid var(--maroon);
-      font-style: italic;
-      color: rgba(242,237,228,0.5);
-      font-size: 0.9rem;
-    }
-
-    /* ── BACK LINK ── */
-    .back-section {
-      padding: 0 8vw 6rem;
-      max-width: 860px;
-      margin: 0 auto;
-      border-top: 1px solid var(--line);
-      padding-top: 4rem;
-    }
-
-    .back-link {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      transition: color 0.2s;
-    }
-
-    .back-link:hover { color: var(--gold); }
-    .back-link::before { content: '←'; font-size: 0.9rem; }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--line);
-      border-bottom: 3px solid var(--maroon);
-      padding: 2rem 8vw;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    footer span {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       .nav-links { display: none; }
-      .credit-group { grid-template-columns: 1fr; gap: 0.3rem; }
+      .credit { grid-template-columns: 1fr; gap: 0.3rem; }
+      .thankyou-cols { columns: 1; }
+      .credits-body { padding: 3rem 1.5rem 4rem; }
       footer { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">An American Education</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-to-watch.html">How to Watch</a></li>
+    <li><a href="credits.html" class="active">Credits</a></li>
+    <li><a href="learn-more.html">Learn More</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <span class="label">Full Credits</span>
+  <h1>An American Education</h1>
+</div>
+
+<div class="credits-body">
+
+  <div class="credit" style="margin-top: 1.5rem;">
+    <div class="credit-role">Directed and Narrated by</div>
+    <div class="credit-names"><strong>Thai Bonapart</strong></div>
+  </div>
+
+  <div class="dedication">
+    <span class="ded-label">Dedicated to</span>
+    <div class="ded-name">James E. "Fergie" Ferguson II<span class="ded-years">1942 – 2025</span></div>
+    <p class="ded-and">and</p>
+    <div class="ded-name">Barbara Turman Ferguson<span class="ded-years">1944 – 2022</span></div>
+  </div>
+
+  <div class="credits-section">Producers</div>
+
+  <div class="credit">
+    <div class="credit-role">Produced by</div>
+    <div class="credit-names">Elizabeth Martin<br>Marshall Curry<br>Elizabeth Davis<br>Jay Ferguson<br>Anthony Foxx</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Executive Producer</div>
+    <div class="credit-names">Sandra Wilcox Conway</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Associate Producers</div>
+    <div class="credit-names">Kaycee Hailey<br>Bess Hauser</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Field Producers</div>
+    <div class="credit-names">Thadius Bonapart, III<br>Renee Bonapart</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Story Consultant</div>
+    <div class="credit-names">Jason Giersch</div>
+  </div>
+
+  <div class="credits-section">Editorial</div>
+
+  <div class="credit">
+    <div class="credit-role">Editor</div>
+    <div class="credit-names">Kent Basset</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Additional Editing</div>
+    <div class="credit-names">Marshall Curry</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Assistant Editor</div>
+    <div class="credit-names">Kevin Smock</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Archival Producer</div>
+    <div class="credit-names">Caroline Toth</div>
+  </div>
+
+  <div class="credits-section">Cinematography</div>
+
+  <div class="credit">
+    <div class="credit-role">Cinematographers</div>
+    <div class="credit-names">Thai Bonapart<br>Thadius Bonapart, III<br>Renee Bonapart<br>Marshall Curry<br>De'Vonte Frazier<br>Kai Lendzion<br>Blake Mangum<br>Jeremy Seifert<br>Andrew Smith<br>Autavius Smith<br>Treme Wilson</div>
+  </div>
+
+  <div class="credits-section">Music &amp; Sound</div>
+
+  <div class="credit">
+    <div class="credit-role">Original Music</div>
+    <div class="credit-names">Dash Hammerstein</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Re-recording Mixer</div>
+    <div class="credit-names">Paul Hsu <span class="confirm">to confirm</span></div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Sound Editorial &amp; Mix</div>
+    <div class="credit-names">C5, NYC — Part of the Soundtrack Group<br><span style="font-size: 0.9rem; color: var(--mid);">Supervising Sound Editor: Paul Hsu</span></div>
+  </div>
+
+  <div class="credits-section">Post Production</div>
+
+  <div class="credit">
+    <div class="credit-role">Post Production Supervisor</div>
+    <div class="credit-names">Kevin Smock</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Colorist</div>
+    <div class="credit-names">Will Cox</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Online Editor</div>
+    <div class="credit-names">Kevin Allen Caby</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Finishing Producer</div>
+    <div class="credit-names">Wendi Litteral</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Deliverables Technician</div>
+    <div class="credit-names">Daniel Padberg Bartoo</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Post Production Services</div>
+    <div class="credit-names">Skyline Finishing</div>
+  </div>
+
+  <div class="credits-section">Design &amp; Legal</div>
+
+  <div class="credit">
+    <div class="credit-role">Title and Graphic Design</div>
+    <div class="credit-names">Lisa Waltuch<br>Adelaide Utz</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Production Counsel</div>
+    <div class="credit-names">O'Brien Kelley<br>Peter Capozzi<br>Kelley Martin Capozzi LLP</div>
+  </div>
+
+  <div class="credits-section">West Charlotte Student Filmmaker Project</div>
+
+  <div class="credit">
+    <div class="credit-role">Students</div>
+    <div class="credit-names">Thai Bonapart<br>James Boyer<br>Anansi Coleman<br>Deng Chengkuach<br>Blake Mangum</div>
+  </div>
+  <div class="credit">
+    <div class="credit-role">Production Assistants</div>
+    <div class="credit-names">Jane Curry<br>Rivers Curry<br>Salomé Noufele<br>Adelaide Utz<br>Anders Utz</div>
+  </div>
+
+  <div class="credits-section">Special Thanks</div>
+
+  <div class="credit">
+    <div class="credit-role"></div>
+    <div class="credit-names" style="line-height: 2;">
+      The Bonapart and Gore Families<br>
+      David Martin<br>Randi Beem<br>Reneisha Black Ferguson<br>Samara Foxx<br>
+      Joan Martin<br>Joe B. Martin<br>Ayanna Perry<br>Kevin Poirier<br>
+      Dawn Schmitz<br>Wynn Utz<br>Ulysses West<br>Anthony Wright<br><br>
+      All of the Students, Faculty and Staff of West Charlotte High School
+    </div>
+  </div>
+
+  <div class="credits-section">Thank You</div>
+
+  <div class="thankyou-cols">
+    Reba Alexander<br>Christen Compten Allison<br>James Alverson<br>Deborah Ayers<br>
+    Brooke Barnett<br>Amir Bar-Lev<br>Aiden and Zayden Bennett<br>
+    Opal H. Bennett <span class="confirm">confirm</span><br>
+    Karen Fredenberg Bergmann<br>Joy Berry<br>Ann Betterton<br>Rebekah Hall Bing<br>
+    Vita Borjas<br>Rachel Kline Brown<br>Eleanor Brawley<br>May Martin Bryan<br>
+    Pat Burgess<br>Thelma Byers-Bailey<br>
+    Holly Carter <span class="confirm">confirm</span><br>
+    Chuck Crews<br>John Crowell<br>Boykin Curry<br>Caroline Curry<br>
+    Kyra Darnton <span class="confirm">confirm</span><br>
+    Adelaide Davis<br>Rob Davis<br>Athena Devlin<br>Kathryn Frye<br>
+    Tim Gibbs<br>Craig Girvan<br>Liz Girvan<br>Finn Girvan<br>
+    Benjamin Goldberg<br>Kathy Svenson Grubbs<br>Vanessa Haygood<br>
+    Donevin Hoskins<br>Hillary Foxx<br>Laura Foxx<br>Zachary Foxx<br>
+    Ben Goldberg<br>Gege Grier<br>Arthur Griffin<br>Beth Hays-Stevens<br>
+    Ivy Jackson<br>Reginald Jackson<br>Kristen Johnson<br>
+    Håkon Kavli<br>Hanne Kavli<br>Tuva Kavli<br>Thomas Kirkley<br>
+    Leroy Long<br>Rhonda Long<br>Niki Lowry<br>Brandon D. Lundsford<br>
+    Sally Wheeler Maier<br>Coby Martin<br>Jodi Martin<br>Joseph Martin<br>Laurie Martin<br>
+    Kirk Michie<br>Roslyn Arlin Mickelson<br>Scott Miller<br>
+    Katherine Caldwell Mitchell<br>Tom Mould<br>Nikolai Nitschke<br>Decker Ngongang<br>
+    Anne Buck Oxrider<br>AnneGray Oxrider<br>John Oxrider<br>
+    Andrew Park<br>Carol Parrish<br>Bernetta Powell<br>Kelly Pratt<br>Greg Pringle<br>
+    Betsy Ray<br>Margaret "Maggie" Ray<br>Rich Remsberg<br>Orlando Robinson<br>
+    Von Ross<br>Kristi Roth<br>Amy Sandrene<br>Jen Schenkel<br>
+    Imana Sherrill<br>Linda Shropshire<br>Anna Snowdon Siefken<br>
+    Warren Simons<br>David Sippe<br>Liza Sippe<br>Charles Smith<br>
+    Anya Solomon<br>Shuchi Talati<br>Holly Thompson<br>Daisy Walker<br>
+    Gary Weart<br>Julia Bracey Weil<br>Trevor Whitson<br>
+    Chris White <span class="confirm">confirm</span><br>
+    Lori Williams<br>Anthony Wright<br>Stephanie Wyatt<br>Peter Yost
+  </div>
+
+  <div style="margin-top: 2.5rem; font-size: 0.95rem; line-height: 2;">
+    Abel Jackson and the River of Life Mural<br>
+    The Charlotte Alumnae Chapter of Delta Sigma Theta Sorority, Inc.<br>
+    Johnson C. Smith University<br>
+    Special Collections and University Archives at Atkins Library, UNC Charlotte<br>
+    Trinity Episcopal School<br>
+    West Charlotte High School National Alumni Association, Inc.<br>
+    West End Fresh Seafood Market
+  </div>
+
+  <div class="credits-section">With Support From</div>
+
+  <div class="support-box">
+    Anna and Ed McMahan<br>
+    The Conway/Holderness Fund<br>
+    Foundation for the Carolinas<br>
+    James and Mary Foxx Foundation<br>
+    The Leigh J. and Carrie C. Abramson Fund<br>
+    Liz and Wilson Sullivan<br>
+    Sally Wheeler Maier and William Maier
+  </div>
+
+  <div class="credits-section">Archival Footage, Photos &amp; Documents Courtesy of</div>
+
+  <ul class="archival-list">
+    <li>Curt Peters</li>
+    <li>Joan and Joe Martin</li>
+    <li>Terry Rankin</li>
+    <li>ABCNEWS VIDEOSOURCE</li>
+    <li>NBC News Archives via Getty Images</li>
+    <li>Channel 9 Eyewitness News, WSOC-TV</li>
+    <li>Carl Iwasaki / The Chronicle Collection via Getty Images</li>
+    <li>Science History Images / Alamy</li>
+    <li>Photograph Collection, LDF Staff. © NAACP Legal Defense and Educational Fund, Inc.</li>
+    <li>Harold L. Valentine, Associated Press © 1972 AP, © 1970 AP. All rights reserved.</li>
+    <li>UPI / Bettmann via Getty Images</li>
+  </ul>
+
+  <div style="margin-top: 2.5rem;">
+    <div style="font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.8rem;">Additional Materials Provided by</div>
+    <div style="font-size: 0.9rem; color: var(--mid); line-height: 1.9;">
+      CBS News &nbsp;&middot;&nbsp; Charlotte Museum of History &nbsp;&middot;&nbsp; Charlotte Observer Negative &amp; Yearbook Collections, Robinson-Spangler Carolina Room, Charlotte Mecklenburg Library &nbsp;&middot;&nbsp; Don Sturkey Photographic Materials, North Carolina Collection Photographic Archives, The Wilson Library, UNC Chapel Hill &nbsp;&middot;&nbsp; PBS of North Carolina &nbsp;&middot;&nbsp; Stan Wayman / Life Magazine &nbsp;&middot;&nbsp; Surry County Digital Heritage &nbsp;&middot;&nbsp; WBT/WBTV Corporate Records, Manuscript Collections &amp; WBTV Newsfilm Collection, J. Murrey Atkins Library Special Collections &amp; University Archives, UNC Charlotte
+    </div>
+    <div style="margin-top: 1.2rem; font-size: 0.9rem; line-height: 2;">
+      Ella Dennis &nbsp;&middot;&nbsp; Katherine Scholl Hoskins &nbsp;&middot;&nbsp; Kelly Jessie &nbsp;&middot;&nbsp; Victoria Phelps Keish &nbsp;&middot;&nbsp; Rhonda Long &nbsp;&middot;&nbsp; Susan Evett Miller &nbsp;&middot;&nbsp; Kevin Poirier &nbsp;&middot;&nbsp; Aaron Rankin &nbsp;&middot;&nbsp; Cyndi Soter-O'Neil &nbsp;&middot;&nbsp; Eric Willhelm &nbsp;&middot;&nbsp; Pamela Grundy
+    </div>
+  </div>
+
+  <div class="copyright">
+    <p>© 2026 WCHS History Project, Inc.</p>
+    <p style="font-size: 0.72rem; margin-top: 0.4rem;">This motion picture is protected under the laws of the United States and other countries. Any unauthorized use may result in civil liability and criminal prosecution.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2026 An American Education — West Charlotte History Project</span>
   <nav>
-    <a class="nav-title" href="index.html">An American Education</a>
-    <ul class="nav-links">
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#watch">Watch</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-      <li><a href="statement.html">Director's Statement</a></li>
-      <li><a href="credits.html" class="active">Full Credits</a></li>
-    </ul>
+    <a href="index.html">Home</a>
+    <a href="how-to-watch.html">How to Watch</a>
+    <a href="credits.html">Credits</a>
+    <a href="learn-more.html">Learn More</a>
   </nav>
-
-  <!-- PAGE HEADER -->
-  <div class="page-header">
-    <p class="page-eyebrow">An American Education</p>
-    <h1 class="page-title">Full <em>Credits</em></h1>
-  </div>
-
-  <!-- CREDITS BODY -->
-  <div class="credits-body">
-    <div class="credits-divider"></div>
-
-    <div class="credit-group">
-      <p class="credit-role">Director &amp; Narrator</p>
-      <p class="credit-names">Thai Bonapart</p>
-    </div>
-
-    <div class="credit-group">
-      <p class="credit-role">Executive Producer</p>
-      <p class="credit-names">Sandra Conway</p>
-    </div>
-
-    <div class="credit-group">
-      <p class="credit-role">Producers</p>
-      <p class="credit-names">Elizabeth Martin<br/>Marshall Curry<br/>Jay Ferguson<br/>Elizabeth Davis</p>
-    </div>
-
-    <!-- ADD ADDITIONAL CREDITS BELOW — copy a credit-group block for each new role -->
-    <!--
-    <div class="credit-group">
-      <p class="credit-role">Role Title</p>
-      <p class="credit-names">Name Here</p>
-    </div>
-    -->
-
-    <div class="coming-soon">
-      Additional credits coming soon.
-    </div>
-
-  </div>
-
-  <!-- BACK -->
-  <div class="back-section">
-    <a class="back-link" href="index.html">Back to Home Page</a>
-  </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <span>An American Education &nbsp;·&nbsp; A Documentary Film</span>
-    <span>&copy; 2026 Wild Violet Media</span>
-  </footer>
-
+</footer>
 </body>
 </html>

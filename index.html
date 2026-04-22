@@ -1,514 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>An American Education — A Documentary Film</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Libre+Baskerville:ital@0;1&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>An American Education</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --black: #0d0c0a;
-      --warm-white: #f2ede4;
-      --gold: #d4922a;
-      --maroon: #6e1c2e;
-      --maroon-light: rgba(110,28,46,0.18);
-      --muted: #8a8070;
-      --line: rgba(242,237,228,0.15);
+      --white:  #f7f5f1;
+      --black:  #161412;
+      --mid:    #5a5550;
+      --rule:   #ccc7bf;
+      --accent: #b04a2a;
+      --pale:   #eeebe5;
+      --nav-h:  56px;
     }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--black);
-      color: var(--warm-white);
-      font-family: 'Libre Baskerville', serif;
-      font-size: 15px;
-      line-height: 1.8;
+      background: var(--white);
+      color: var(--black);
+      font-family: 'Fira Sans', sans-serif;
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.65;
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--black);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 1.4rem 5vw;
-      background: linear-gradient(to bottom, rgba(13,12,10,0.95), transparent);
+      justify-content: flex-start;
+      gap: 3rem;
+      padding: 0 2.5rem;
+      z-index: 900;
     }
-
-    .nav-title {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
+    .nav-brand {
+      font-family: 'Fira Sans Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--warm-white);
+      color: var(--white);
       text-decoration: none;
-      opacity: 0.8;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
     .nav-links a {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.68rem;
-      letter-spacing: 0.25em;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--warm-white);
+      color: rgba(247,245,241,0.85);
       text-decoration: none;
-      opacity: 0.65;
-      transition: opacity 0.2s;
+      transition: color 0.2s;
     }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
 
-    .nav-links a:hover { opacity: 1; }
-
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       position: relative;
       height: 100vh;
-      min-height: 600px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      min-height: 560px;
+      margin-top: var(--nav-h);
       overflow: hidden;
+      display: flex;
+      align-items: flex-end;
     }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: var(--black);
-    }
-
-    /* Subtle texture overlay */
-    .hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.4;
-    }
-
-    .hero-img {
+    .hero img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.45;
-      filter: grayscale(30%) contrast(1.1);
-      animation: slowZoom 16s ease-out forwards;
+      object-position: center 15%;
     }
-
-    @keyframes slowZoom {
-      from { transform: scale(1.08); }
-      to { transform: scale(1.0); }
-    }
-
-    .hero-gradient {
+    .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(13,12,10,0.3) 0%,
-        rgba(110,28,46,0.12) 30%,
-        rgba(13,12,10,0.85) 80%,
-        rgba(13,12,10,1) 100%
-      );
+      background: linear-gradient(to bottom, transparent 30%, rgba(22,20,18,0.75) 80%, rgba(22,20,18,0.92) 100%);
     }
-
-    .hero-content {
+    .hero-text {
       position: relative;
       z-index: 2;
-      padding: 0 8vw 8vh;
-      max-width: 900px;
-      animation: fadeUp 1.6s 0.2s both ease-out;
+      padding: 0 2.5rem 4rem;
+      max-width: 800px;
     }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-eyebrow {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.68rem;
-      letter-spacing: 0.35em;
+    .hero-text .eyebrow {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--white);
       margin-bottom: 1.2rem;
     }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: clamp(3.5rem, 9vw, 8rem);
-      line-height: 0.95;
-      letter-spacing: -0.01em;
-      margin-bottom: 2rem;
+    .hero-text h1 {
+      font-family: 'Fira Sans Condensed', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      margin-bottom: 1.5rem;
     }
-
-    .hero-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-logline {
-      font-family: 'Libre Baskerville', serif;
-      font-style: italic;
-      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-      color: rgba(242,237,228,0.7);
-      max-width: 580px;
-      line-height: 1.7;
-      border-left: 2px solid var(--maroon);
-      padding-left: 1.2rem;
-    }
-
-    /* ── DIVIDER ── */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--line);
-    }
-
-    /* ── ABOUT ── */
-    #about {
-      padding: 7rem 8vw;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: 'Josefin Sans', sans-serif;
+    .hero-text p {
+      font-size: clamp(1rem, 1.6vw, 1.15rem);
       font-weight: 300;
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 3rem;
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
-    .about-text {
-      font-size: clamp(1.1rem, 2vw, 1.4rem);
-      font-style: italic;
       line-height: 1.7;
-      color: rgba(242,237,228,0.85);
-      max-width: 720px;
-      margin-bottom: 4rem;
+      color: rgba(247,245,241,0.82);
+      max-width: 58ch;
+      margin-bottom: 2.2rem;
     }
-
-    /* ── CREDITS ── */
-    #credits {
-      padding: 0 8vw 7rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .credits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 3rem 4rem;
-      margin-top: 1rem;
-      background: var(--maroon-light);
-      border-left: 3px solid var(--maroon);
-      padding: 2.5rem;
-      border-radius: 2px;
-    }
-
-    .credit-item h3 {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 400;
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
-
-    .credit-item p {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 400;
-      color: var(--warm-white);
-      line-height: 1.5;
-    }
-
-    /* ── GALLERY ── */
-    #gallery {
-      padding: 0 0 7rem;
-    }
-
-    #gallery .section-label {
-      padding: 0 8vw;
-      max-width: 1100px;
-      margin: 0 auto 2.5rem;
-    }
-
-    .gallery-strip {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3px;
-      max-height: 480px;
-    }
-
-    .gallery-item {
-      overflow: hidden;
-      background: #1a1814;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(20%);
-      transition: transform 0.8s ease, filter 0.8s ease;
-      display: block;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.05);
-      filter: grayscale(0%);
-    }
-
-    .gallery-placeholder {
-      width: 100%;
-      height: 100%;
-      min-height: 240px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(242,237,228,0.15);
-      font-family: 'Josefin Sans', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-    }
-
-    /* ── WATCH ── */
-    #watch {
-      padding: 7rem 8vw;
-      max-width: 1100px;
-      margin: 0 auto;
-      border-top: 1px solid var(--line);
-    }
-
-    .watch-text {
-      font-style: italic;
-      color: rgba(242,237,228,0.6);
-      font-size: 1rem;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      padding: 7rem 8vw;
-      border-top: 1px solid var(--line);
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 3rem;
-    }
-
-    .contact-heading {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 4rem);
-      font-weight: 400;
-      line-height: 1.1;
-    }
-
-    .contact-heading em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .contact-link {
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
       display: inline-block;
-      margin-top: 1.8rem;
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--warm-white);
       text-decoration: none;
-      border-bottom: 1px solid rgba(242,237,228,0.3);
+      padding: 0.75rem 1.75rem;
+      border: 1px solid;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .btn-primary:hover { background: #c05530; border-color: #c05530; }
+    .btn-secondary { background: transparent; color: rgba(247,245,241,0.8); border-color: rgba(247,245,241,0.35); }
+    .btn-secondary:hover { border-color: var(--white); color: var(--white); }
+
+    /* LAYOUT */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 2.5rem; }
+    .section { padding: 5rem 0; }
+
+    /* TYPOGRAPHY */
+    h2 {
+      font-family: 'Fira Sans Condensed', sans-serif;
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: 0.01em;
+      margin-bottom: 1.2rem;
+    }
+    p { max-width: 64ch; margin-bottom: 1.1rem; color: #2a2520; }
+    p:last-child { margin-bottom: 0; }
+    .label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5vw;
+      align-items: start;
+    }
+    .about-photo { width: 100%; display: block; }
+    .photo-caption {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--mid);
+      margin-top: 0.6rem;
+    }
+
+    /* PHOTO STRIP */
+    .strip { background: #111; padding: 3px 0; overflow: hidden; }
+    .strip-inner { display: flex; gap: 3px; }
+    .strip-inner img {
+      flex: 1 1 25%;
+      width: 25%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.88);
+      transition: filter 0.3s;
+    }
+    .strip-inner img:hover { filter: brightness(1); }
+
+    /* DIRECTOR */
+    .director-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 5vw;
+      align-items: start;
+    }
+    .director-photo { width: 100%; display: block; }
+    .director-name {
+      font-family: 'Fira Sans Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      color: var(--black);
+    }
+    .director-role {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: 0.25rem;
+    }
+    .statement-placeholder {
+      background: var(--pale);
+      border-left: 3px solid var(--accent);
+      padding: 1.5rem 1.8rem;
+      margin-top: 1.5rem;
+      color: var(--mid);
+      font-size: 0.95rem;
+      max-width: none;
+    }
+
+    /* CONTACT */
+    .contact-band {
+      background: var(--black);
+      padding: 5rem 2.5rem;
+      text-align: center;
+    }
+    .contact-band h2 { color: var(--white); margin-bottom: 0.8rem; }
+    .contact-band p { color: rgba(247,245,241,0.6); max-width: 50ch; margin: 0 auto 2rem; }
+    .contact-email {
+      font-family: 'Fira Sans Condensed', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      text-decoration: none;
+      border-bottom: 2px solid var(--accent);
       padding-bottom: 3px;
-      transition: color 0.2s, border-color 0.2s;
+      transition: color 0.2s;
     }
+    .contact-email:hover { color: var(--accent); }
 
-    .contact-link:hover {
-      color: var(--gold);
-      border-color: var(--gold);
-    }
-
-    /* ── FOOTER ── */
+    /* FOOTER */
     footer {
-      border-top: 1px solid var(--line);
-      border-bottom: 3px solid var(--maroon);
-      padding: 2rem 8vw;
+      background: var(--black);
+      color: rgba(247,245,241,0.4);
+      padding: 2.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      border-top: 1px solid #2a2520;
     }
+    footer a { color: rgba(247,245,241,0.4); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+    footer nav { display: flex; gap: 2rem; }
 
-    footer span {
-      font-family: 'Josefin Sans', sans-serif;
-      font-weight: 300;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
 
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    footer a:hover { color: var(--gold); }
-
-    /* ── REVEAL ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.9s ease, transform 0.9s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 640px) {
-      .gallery-strip { grid-template-columns: 1fr; max-height: none; }
-      .credits-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      #contact { flex-direction: column; align-items: flex-start; }
-      footer { flex-direction: column; text-align: center; }
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
       .nav-links { display: none; }
+      .container { padding: 0 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .director-grid { grid-template-columns: 1fr; }
+      .director-photo { max-width: 220px; }
+      .strip-inner img { flex: 1 1 50%; width: 50%; }
+      footer { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a class="nav-title" href="index.html">An American Education</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#watch">Watch</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="statement.html">Director's Statement</a></li>
-      <li><a href="credits.html">Full Credits</a></li>
-    </ul>
-  </nav>
+<nav>
+  <a href="index.html" class="nav-brand">An American Education</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="how-to-watch.html">How to Watch</a></li>
+    <li><a href="credits.html">Credits</a></li>
+    <li><a href="learn-more.html">Learn More</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-bg"></div>
-    <img class="hero-img" src="hero.jpg" alt="An American Education documentary still"/>
-    <div class="hero-gradient"></div>
-    <div class="hero-content">
-      <p class="hero-eyebrow">A Documentary Film &nbsp;·&nbsp; 24 Minutes</p>
-      <h1 class="hero-title">An <em>American</em><br>Education</h1>
-      <p class="hero-logline">Director Thai Bonapart explores a surprising chapter of her historically Black high school's history, when white students were bused in. The story challenges and twists the conventional narrative on busing, integration, and the South.</p>
+<section class="hero">
+  <img src="hero.jpg" alt="An American Education — West Charlotte homecoming parade">
+  <div class="hero-overlay"></div>
+  <div class="hero-text">
+    <span class="eyebrow">A Short Documentary Film</span>
+    <h1>An American Education</h1>
+    <p>West Charlotte student and director Thai Bonapart explores a surprising chapter of her historically Black high school's history, when white students were bused in. The story challenges and twists the conventional narrative on busing, integration, and the South.</p>
+    <div class="hero-links">
+      <a href="how-to-watch.html" class="btn btn-primary">How to Watch</a>
+      <a href="learn-more.html" class="btn btn-secondary">Learn More</a>
     </div>
   </div>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <p class="section-label reveal">About the Film</p>
-    <p class="about-text reveal">
-      West Charlotte High School has long been a cornerstone of its community. But one chapter of its history remains surprising, revelatory, and urgently relevant — a moment when integration was not only attempted, but truly lived. <em>An American Education</em> revisits that chapter, and asks what it means that it eventually unraveled.
-    </p>
-  </section>
-
-  <!-- CREDITS -->
-  <section id="credits">
-    <p class="section-label reveal">Credits</p>
-    <div class="credits-grid">
-      <div class="credit-item reveal">
-        <h3>Director &amp; Narrator</h3>
-        <p>Thai Bonapart</p>
+<div class="container">
+  <section class="section fade-in">
+    <div class="about-grid">
+      <div>
+        <span class="label">About the Film</span>
+        <h2>A story worth remembering</h2>
+        <p>West Charlotte High School has long stood as a center of Black educational life in Charlotte, North Carolina. But there is a chapter of its history that bears re-telling — the years when, under court-ordered busing, white students were assigned to a school built for and by a Black community.</p>
+        <p>Director Thai Bonapart, herself a student at West Charlotte, turns her camera toward that history. She interviews alumni who lived it, examines what was gained and what was lost, and asks what it means for how we understand integration today.</p>
+        <p>What she discovers challenges assumptions — about busing, about integration, and about the communities that both bore its costs and shared in its benefits.</p>
       </div>
-      <div class="credit-item reveal">
-        <h3>Executive Producer</h3>
-        <p>Sandra Conway</p>
-      </div>
-      <div class="credit-item reveal">
-        <h3>Producers</h3>
-        <p>Elizabeth Martin<br/>Marshall Curry<br/>Jay Ferguson<br/>Elizabeth Davis</p>
-      </div>
-    </div>
-    <div class="reveal" style="margin-top: 2rem;">
-      <a href="credits.html" style="font-family:'Josefin Sans',sans-serif; font-weight:300; font-size:0.68rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); text-decoration:none; border-bottom: 1px solid rgba(138,128,112,0.4); padding-bottom:2px; transition: color 0.2s, border-color 0.2s;" onmouseover="this.style.color='var(--gold)';this.style.borderColor='var(--gold)'" onmouseout="this.style.color='var(--muted)';this.style.borderColor='rgba(138,128,112,0.4)'">Full Credits →</a>
-    </div>
-  </section>
-  <section id="gallery">
-    <p class="section-label reveal">Stills</p>
-    <div class="gallery-strip">
-      <div class="gallery-item reveal">
-        <img src="davethad" alt="David and Thad"/>
-      </div>
-      <div class="gallery-item reveal">
-        <img src="Thai.jpg" alt="Thai Bonapart"/>
-      </div>
-      <div class="gallery-item reveal">
-       <img src="bwbasketball.jpg" alt="1970s basketball"/>
+      <div>
+        <img class="about-photo" src="bwbasketball.jpg" alt="West Charlotte Lions basketball team, integrated roster — archival photograph">
+        <p class="photo-caption">West Charlotte Lions — archival photograph</p>
       </div>
     </div>
   </section>
+</div>
 
-  <!-- WATCH -->
-  <section id="watch">
-    <p class="section-label reveal">How to Watch</p>
-    <p class="watch-text reveal">Please check back for screening dates, times, and other updates.</p>
-  </section>
+<div class="strip">
+  <div class="strip-inner">
+    <img src="hero.jpg" alt="West Charlotte homecoming parade">
+    <img src="davethad.jpg" alt="Alumni at West Charlotte gymnasium">
+    <img src="mural.jpg" alt="West Charlotte community mural">
+    <img src="Thai.jpg" alt="Director Thai Bonapart filming">
+  </div>
+</div>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="reveal">
-      <h2 class="contact-heading">Get in<br><em>touch.</em></h2>
-      <p style="margin-top:1.2rem; font-size:0.85rem; color:var(--muted); font-family:'Josefin Sans',sans-serif; letter-spacing:0.1em;">Elizabeth Martin, Producer</p>
-      <a class="contact-link" href="/cdn-cgi/l/email-protection#abcec7c2d1cac9cedfc3ebdcc2c7cfddc2c4c7cedfc6cecfc2ca85c8c4c6"><span class="__cf_email__" data-cfemail="0b6e6762716a696e7f634b7c62676f7d6264676e7f666e6f626a25686466">[email&#160;protected]</span></a>
-    </div>
-  </section>
+<div style="background: var(--pale);">
+  <div class="container">
+    <section class="section fade-in">
+      <div class="director-grid">
+        <div>
+          <img class="director-photo" src="Thai_headshot.jpg" alt="Thai Bonapart, Director">
+          <p class="director-name">Thai Bonapart</p>
+          <p class="director-role">Director</p>
+        </div>
+        <div>
+          <span class="label">Director's Statement</span>
+          <p>Growing up in Charlotte, the history of West Charlotte High School was never foreign to me — it was something I constantly heard about. My father, a proud West Charlotte graduate, often spoke about the school's legacy and the pride it carried in the community. My mother has also worked at West Charlotte for almost thirty years. My childhood was immersed in the school's culture, and surrounded by the alumni, teachers, and the community that has always defined it. However, it was not until my freshman year at West Charlotte that I fully understood the significance of the school's history.</p>
+          <p>That year, I took an African American studies class, in which my teacher curated a curriculum that introduced us to the full story of West Charlotte and the role it played during the era of busing in Charlotte. Learning about the school's history in an academic environment allowed me to understand its broader historical context, and connected many of the stories I grew up hearing. This connection of broader history and personal stories resonated with me and reshaped how I once perceived the school I had always known.</p>
+          <p>A year later, when I had the opportunity to begin working on a documentary alongside a group of West Charlotte alumni, I realized that it was my generational responsibility to tell this story.</p>
+          <p>West Charlotte represents more than just a school — it reflects a community, a pivotal era in history, and an ongoing conversation about integration, diversity, and the decisions cities make about their future. Because of my relationship to the school and the community, I felt called to help tell this story in a way that would resonate with both those who lived it and those discovering it for the first time.</p>
+          <p>The trust and openness of the people I interviewed made this film possible. Many members of the West Charlotte community were eager to share their experiences because they care deeply about preserving the legacy of the school. Their stories reveal just how profoundly integration shaped their lives. Many people recognize West Charlotte as a place where students from different racial and cultural backgrounds came together in ways that felt transformative. Many spoke about that time as something almost surreal — a rare moment when diversity was not only present, but truly lived.</p>
+          <p>The story of West Charlotte reminds us that progress is not permanent — it requires persistent commitment.</p>
+          <p>After watching this film, I hope audiences reflect on the impact of successful integration at West Charlotte and what it means that this system eventually unraveled. By revisiting this chapter of Charlotte's history, I hope the film ignites meaningful conversations about how communities can move forward without losing sight of what once brought them together.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
 
-  <!-- FOOTER -->
-  <footer>
-    <span>An American Education &nbsp;·&nbsp; A Documentary Film</span>
-    <span>&copy; 2026 Wild Violet Media</span>
-  </footer>
+<div class="contact-band fade-in">
+  <span class="label" style="color: var(--accent);">Contact</span>
+  <h2>Get in Touch</h2>
+  <p>For screening inquiries, press, educational licensing, or any questions about the film.</p>
+  <a class="contact-email" href="mailto:wchshistoryproject@gmail.com">wchshistoryproject@gmail.com</a>
+</div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.
+<footer>
+  <span>© 2026 An American Education — West Charlotte History Project</span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="how-to-watch.html">How to Watch</a>
+    <a href="credits.html">Credits</a>
+    <a href="learn-more.html">Learn More</a>
+  </nav>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
