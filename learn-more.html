@@ -7,87 +7,79 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --white:  #f7f5f1;
-      --black:  #161412;
-      --mid:    #5a5550;
-      --rule:   #ccc7bf;
-      --accent: #b04a2a;
-      --pale:   #eeebe5;
-      --nav-h:  56px;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--white); color: var(--black); font-family: 'Fira Sans', sans-serif; font-weight: 400; font-size: 17px; line-height: 1.65; overflow-x: hidden; }
+    :root { --white:#f7f5f1; --black:#161412; --mid:#5a5550; --rule:#ccc7bf; --accent:#b04a2a; --pale:#eeebe5; --nav-h:68px; }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--white); color:var(--black); font-family:'Fira Sans',sans-serif; font-weight:400; font-size:17px; line-height:1.65; overflow-x:hidden; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: var(--black); display: flex; align-items: center; justify-content: flex-start; gap: 3rem; padding: 0 2.5rem; z-index: 900; }
-    .nav-brand { font-family: 'Fira Sans Condensed', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); text-decoration: none; }
-    .nav-links { list-style: none; display: flex; gap: 2rem; }
-    .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,245,241,0.85); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .topnav { position:fixed; top:0; left:0; right:0; height:var(--nav-h); background:var(--black); display:flex; align-items:center; gap:3rem; padding:0 2.5rem; z-index:900; }
+    .topnav-brand { font-family:'Fira Sans Condensed',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); text-decoration:none; flex-shrink:0; }
+    .topnav-links { display:flex; gap:2.5rem; align-items:center; }
+    .topnav-links a { font-family:'Fira Sans',sans-serif; font-size:15px; font-weight:500; color:#e8e4dc; text-decoration:none; transition:color 0.2s; }
+    .topnav-links a:hover, .topnav-links a.active { color:#ffffff; }
 
-    .page-header { margin-top: var(--nav-h); padding: 5rem 2.5rem 4rem; background: var(--black); color: var(--white); border-bottom: 1px solid #2a2520; }
-    .page-header .label { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 1rem; }
-    .page-header h1 { font-family: 'Fira Sans Condensed', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: 0.01em; }
+    .page-header { margin-top:var(--nav-h); padding:5rem 2.5rem 4rem; background:var(--black); color:var(--white); border-bottom:1px solid #2a2520; }
+    .page-header .eyebrow { font-size:0.9rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:1rem; }
+    .page-header h1 { font-family:'Fira Sans Condensed',sans-serif; font-size:clamp(2.2rem,5vw,4rem); font-weight:700; line-height:1.05; letter-spacing:0.01em; }
 
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 2.5rem; }
-    .section { padding: 5rem 0; }
+    .container { max-width:1120px; margin:0 auto; padding:0 2.5rem; }
+    .section { padding:5rem 0; }
 
-    h2 { font-family: 'Fira Sans Condensed', sans-serif; font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: 700; line-height: 1.1; letter-spacing: 0.01em; margin-bottom: 1.2rem; }
-    h3 { font-family: 'Fira Sans Condensed', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
-    p { max-width: 64ch; margin-bottom: 1.1rem; color: #2a2520; }
-    p:last-child { margin-bottom: 0; }
-    .label { display: block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
-    hr { border: none; border-top: 1px solid var(--rule); margin: 3.5rem 0; }
+    h2 { font-family:'Fira Sans Condensed',sans-serif; font-size:clamp(1.5rem,2.8vw,2.2rem); font-weight:700; line-height:1.1; letter-spacing:0.01em; margin-bottom:1.2rem; }
+    h3 { font-family:'Fira Sans Condensed',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:0.02em; margin-bottom:0.5rem; }
+    p { max-width:64ch; margin-bottom:1.1rem; color:#2a2520; }
+    p:last-child { margin-bottom:0; }
+    .label { display:block; font-size:0.72rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:0.8rem; }
+    hr { border:none; border-top:1px solid var(--rule); margin:3.5rem 0; }
 
-    .context-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 2.5rem; }
-    .context-card { background: var(--white); padding: 2.5rem 2rem; }
-    .context-card p { font-size: 0.95rem; color: var(--mid); max-width: none; margin-bottom: 0; }
+    .context-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:var(--rule); border:1px solid var(--rule); margin-top:2.5rem; }
+    .context-card { background:var(--white); padding:2.5rem 2rem; }
+    .context-card p { font-size:0.95rem; color:var(--mid); max-width:none; margin-bottom:0; }
 
-    .guide-box { background: var(--black); padding: 3.5rem 3rem; margin-top: 2.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 3rem; flex-wrap: wrap; }
-    .guide-box h3 { color: var(--white); margin-bottom: 0.7rem; }
-    .guide-box p { color: rgba(247,245,241,0.6); max-width: 50ch; }
-    .guide-box p + p { margin-top: 0.8rem; }
-    .guide-box a { color: var(--white); font-weight: 600; }
-    .coming-soon { flex-shrink: 0; align-self: center; font-family: 'Fira Sans Condensed', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.65rem 1.4rem; white-space: nowrap; }
+    .guide-box { background:var(--black); padding:3.5rem 3rem; margin-top:2.5rem; display:flex; align-items:flex-start; justify-content:space-between; gap:3rem; flex-wrap:wrap; }
+    .guide-box h3 { color:var(--white); margin-bottom:0.7rem; }
+    .guide-box p { color:rgba(247,245,241,0.6); max-width:50ch; }
+    .guide-box p + p { margin-top:0.8rem; }
+    .guide-box a { color:var(--white); font-weight:600; }
+    .coming-soon { flex-shrink:0; align-self:center; font-family:'Fira Sans Condensed',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent); padding:0.65rem 1.4rem; white-space:nowrap; }
 
-    .mural-photo { width: 100%; display: block; margin-top: 3.5rem; }
-    .photo-caption { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; color: var(--mid); margin-top: 0.6rem; display: block; }
+    .mural-photo { width:100%; display:block; margin-top:3.5rem; }
+    .photo-caption { font-size:0.75rem; font-weight:500; color:var(--mid); margin-top:0.6rem; display:block; }
 
-    .reading-list { margin-top: 1.5rem; }
-    .reading-item { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1.2rem; padding: 1.2rem 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
-    .reading-num { font-family: 'Fira Sans Condensed', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--accent); }
-    .reading-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
-    .reading-note { font-size: 0.85rem; color: var(--mid); }
+    .reading-list { margin-top:1.5rem; }
+    .reading-item { display:grid; grid-template-columns:2.5rem 1fr; gap:1.2rem; padding:1.2rem 0; border-bottom:1px solid var(--rule); align-items:baseline; }
+    .reading-num { font-family:'Fira Sans Condensed',sans-serif; font-size:0.85rem; font-weight:700; color:var(--accent); }
+    .reading-title { font-weight:600; font-size:0.95rem; margin-bottom:0.2rem; }
+    .reading-note { font-size:0.85rem; color:var(--mid); }
 
-    footer { background: var(--black); color: rgba(247,245,241,0.4); padding: 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; border-top: 1px solid #2a2520; }
-    footer a { color: rgba(247,245,241,0.4); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--white); }
-    footer nav { display: flex; gap: 2rem; }
+    .site-footer { background:var(--black); color:rgba(247,245,241,0.4); padding:2.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.75rem; font-weight:500; letter-spacing:0.06em; border-top:1px solid #2a2520; }
+    .site-footer a { color:rgba(247,245,241,0.4); text-decoration:none; transition:color 0.2s; }
+    .site-footer a:hover { color:var(--white); }
+    .site-footer-links { display:flex; gap:2rem; }
 
-    @media (max-width: 720px) {
-      .nav-links { display: none; }
-      .container { padding: 0 1.5rem; }
-      .page-header { padding: 3.5rem 1.5rem 3rem; }
-      .guide-box { padding: 2.5rem 1.5rem; flex-direction: column; }
-      footer { flex-direction: column; text-align: center; }
+    @media (max-width:720px) {
+      .topnav-links { display:none; }
+      .container { padding:0 1.5rem; }
+      .page-header { padding:3.5rem 1.5rem 3rem; }
+      .guide-box { padding:2.5rem 1.5rem; flex-direction:column; }
+      .site-footer { flex-direction:column; text-align:center; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-brand">An American Education</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="how-to-watch.html">How to Watch</a></li>
-    <li><a href="credits.html">Credits</a></li>
-    <li><a href="learn-more.html" class="active">Learn More</a></li>
-  </ul>
-</nav>
+<header class="topnav">
+  <a href="index.html" class="topnav-brand">An American Education</a>
+  <div class="topnav-links">
+    <a href="index.html">Home</a>
+    <a href="how-to-watch.html">How to Watch</a>
+    <a href="credits.html">Credits</a>
+    <a href="learn-more.html" class="active">Learn More</a>
+  </div>
+</header>
 
 <div class="page-header">
-  <span class="label">History &amp; Resources</span>
+  <span class="eyebrow">History &amp; Resources</span>
   <h1>Learn More</h1>
 </div>
 
@@ -128,7 +120,7 @@
       </div>
     </div>
 
-    <img class="mural-photo" src="mural.jpg" alt="Community mural near West Charlotte High School">
+    <img class="mural-photo" src="mural.jpg" alt="River of Life mural near West Charlotte High School">
     <span class="photo-caption"><em>River of Life</em>, by Abel Jackson, @artbyabel, a mural at West End Fresh Seafood Market near West Charlotte High School.</span>
 
     <hr>
@@ -164,14 +156,14 @@
   </section>
 </div>
 
-<footer>
+<footer class="site-footer">
   <span>© 2026 An American Education — West Charlotte History Project</span>
-  <nav>
+  <div class="site-footer-links">
     <a href="index.html">Home</a>
     <a href="how-to-watch.html">How to Watch</a>
     <a href="credits.html">Credits</a>
     <a href="learn-more.html">Learn More</a>
-  </nav>
+  </div>
 </footer>
 </body>
 </html>

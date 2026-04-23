@@ -14,7 +14,7 @@
       --rule:   #ccc7bf;
       --accent: #b04a2a;
       --pale:   #eeebe5;
-      --nav-h:  56px;
+      --nav-h:  68px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,39 +30,49 @@
       overflow-x: hidden;
     }
 
-    /* NAV */
-    nav {
+    /* ── TOP NAV ── */
+    .topnav {
       position: fixed;
       top: 0; left: 0; right: 0;
       height: var(--nav-h);
       background: var(--black);
       display: flex;
       align-items: center;
-      justify-content: flex-start;
       gap: 3rem;
       padding: 0 2.5rem;
       z-index: 900;
     }
-    .nav-brand {
+
+    .topnav-brand {
       font-family: 'Fira Sans Condensed', sans-serif;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--white);
       text-decoration: none;
+      flex-shrink: 0;
     }
-    .nav-links { list-style: none; display: flex; gap: 2rem; }
-    .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(247,245,241,0.85);
+
+    .topnav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .topnav-links a {
+      font-family: 'Fira Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #e8e4dc;
       text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+
+    .topnav-links a:hover,
+    .topnav-links a.active {
+      color: #ffffff;
+    }
 
     /* HERO */
     .hero {
@@ -162,42 +172,22 @@
     }
 
     /* ABOUT */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5vw;
-      align-items: start;
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; align-items: start; }
     .about-photo { width: 100%; display: block; }
-    .photo-caption {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      color: var(--mid);
-      margin-top: 0.6rem;
-    }
+    .photo-caption { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.05em; color: var(--mid); margin-top: 0.6rem; }
 
     /* PHOTO STRIP */
     .strip { background: #111; padding: 3px 0; overflow: hidden; }
     .strip-inner { display: flex; gap: 3px; }
     .strip-inner img {
-      flex: 1 1 25%;
-      width: 25%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      display: block;
-      filter: brightness(0.88);
-      transition: filter 0.3s;
+      flex: 1 1 25%; width: 25%; aspect-ratio: 4/3;
+      object-fit: cover; display: block;
+      filter: brightness(0.88); transition: filter 0.3s;
     }
     .strip-inner img:hover { filter: brightness(1); }
 
     /* DIRECTOR */
-    .director-grid {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      gap: 5vw;
-      align-items: start;
-    }
+    .director-grid { display: grid; grid-template-columns: 260px 1fr; gap: 5vw; align-items: start; }
     .director-photo { width: 100%; display: block; }
     .director-name {
       font-family: 'Fira Sans Condensed', sans-serif;
@@ -216,29 +206,15 @@
       color: var(--accent);
       margin-top: 0.25rem;
     }
-    .statement-placeholder {
-      background: var(--pale);
-      border-left: 3px solid var(--accent);
-      padding: 1.5rem 1.8rem;
-      margin-top: 1.5rem;
-      color: var(--mid);
-      font-size: 0.95rem;
-      max-width: none;
-    }
 
     /* CONTACT */
-    .contact-band {
-      background: var(--black);
-      padding: 5rem 2.5rem;
-      text-align: center;
-    }
+    .contact-band { background: var(--black); padding: 5rem 2.5rem; text-align: center; }
     .contact-band h2 { color: var(--white); margin-bottom: 0.8rem; }
     .contact-band p { color: rgba(247,245,241,0.6); max-width: 50ch; margin: 0 auto 2rem; }
     .contact-email {
       font-family: 'Fira Sans Condensed', sans-serif;
       font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
       color: var(--white);
       text-decoration: none;
       border-bottom: 2px solid var(--accent);
@@ -248,7 +224,7 @@
     .contact-email:hover { color: var(--accent); }
 
     /* FOOTER */
-    footer {
+    .site-footer {
       background: var(--black);
       color: rgba(247,245,241,0.4);
       padding: 2.5rem;
@@ -262,9 +238,9 @@
       letter-spacing: 0.06em;
       border-top: 1px solid #2a2520;
     }
-    footer a { color: rgba(247,245,241,0.4); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--white); }
-    footer nav { display: flex; gap: 2rem; }
+    .site-footer a { color: rgba(247,245,241,0.4); text-decoration: none; transition: color 0.2s; }
+    .site-footer a:hover { color: var(--white); }
+    .site-footer-links { display: flex; gap: 2rem; }
 
     /* FADE IN */
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -272,27 +248,27 @@
 
     /* RESPONSIVE */
     @media (max-width: 720px) {
-      .nav-links { display: none; }
+      .topnav-links { display: none; }
       .container { padding: 0 1.5rem; }
       .about-grid { grid-template-columns: 1fr; }
       .director-grid { grid-template-columns: 1fr; }
       .director-photo { max-width: 220px; }
       .strip-inner img { flex: 1 1 50%; width: 50%; }
-      footer { flex-direction: column; text-align: center; }
+      .site-footer { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-brand">An American Education</a>
-  <ul class="nav-links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="how-to-watch.html">How to Watch</a></li>
-    <li><a href="credits.html">Credits</a></li>
-    <li><a href="learn-more.html">Learn More</a></li>
-  </ul>
-</nav>
+<header class="topnav">
+  <a href="index.html" class="topnav-brand">An American Education</a>
+  <div class="topnav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="how-to-watch.html">How to Watch</a>
+    <a href="credits.html">Credits</a>
+    <a href="learn-more.html">Learn More</a>
+  </div>
+</header>
 
 <section class="hero">
   <img src="hero.jpg" alt="An American Education — West Charlotte homecoming parade">
@@ -366,14 +342,14 @@
   <a class="contact-email" href="mailto:wchshistoryproject@gmail.com">wchshistoryproject@gmail.com</a>
 </div>
 
-<footer>
+<footer class="site-footer">
   <span>© 2026 An American Education — West Charlotte History Project</span>
-  <nav>
+  <div class="site-footer-links">
     <a href="index.html">Home</a>
     <a href="how-to-watch.html">How to Watch</a>
     <a href="credits.html">Credits</a>
     <a href="learn-more.html">Learn More</a>
-  </nav>
+  </div>
 </footer>
 
 <script>

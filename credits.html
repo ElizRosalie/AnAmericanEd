@@ -7,107 +7,93 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;600&family=Fira+Sans+Condensed:wght@600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --white:  #f7f5f1;
-      --black:  #161412;
-      --mid:    #5a5550;
-      --rule:   #ccc7bf;
-      --accent: #b04a2a;
-      --pale:   #eeebe5;
-      --nav-h:  56px;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--white); color: var(--black); font-family: 'Fira Sans', sans-serif; font-weight: 400; font-size: 17px; line-height: 1.65; overflow-x: hidden; }
+    :root { --white:#f7f5f1; --black:#161412; --mid:#5a5550; --rule:#ccc7bf; --accent:#b04a2a; --pale:#eeebe5; --nav-h:68px; }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { scroll-behavior:smooth; }
+    body { background:var(--white); color:var(--black); font-family:'Fira Sans',sans-serif; font-weight:400; font-size:17px; line-height:1.65; overflow-x:hidden; }
 
-    nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h); background: var(--black); display: flex; align-items: center; justify-content: flex-start; gap: 3rem; padding: 0 2.5rem; z-index: 900; }
-    .nav-brand { font-family: 'Fira Sans Condensed', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); text-decoration: none; }
-    .nav-links { list-style: none; display: flex; gap: 2rem; }
-    .nav-links a { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(247,245,241,0.85); text-decoration: none; transition: color 0.2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .topnav { position:fixed; top:0; left:0; right:0; height:var(--nav-h); background:var(--black); display:flex; align-items:center; gap:3rem; padding:0 2.5rem; z-index:900; }
+    .topnav-brand { font-family:'Fira Sans Condensed',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--white); text-decoration:none; flex-shrink:0; }
+    .topnav-links { display:flex; gap:2.5rem; align-items:center; }
+    .topnav-links a { font-family:'Fira Sans',sans-serif; font-size:15px; font-weight:500; color:#e8e4dc; text-decoration:none; transition:color 0.2s; }
+    .topnav-links a:hover, .topnav-links a.active { color:#ffffff; }
 
-    .page-header { margin-top: var(--nav-h); padding: 5rem 2.5rem 4rem; background: var(--black); color: var(--white); border-bottom: 1px solid #2a2520; }
-    .page-header .label { font-size: 0.9rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 1rem; }
-    .page-header h1 { font-family: 'Fira Sans Condensed', sans-serif; font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 700; line-height: 1.05; letter-spacing: 0.01em; }
+    .page-header { margin-top:var(--nav-h); padding:5rem 2.5rem 4rem; background:var(--black); color:var(--white); border-bottom:1px solid #2a2520; }
+    .page-header .eyebrow { font-size:0.9rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:1rem; }
+    .page-header h1 { font-family:'Fira Sans Condensed',sans-serif; font-size:clamp(2.2rem,5vw,4rem); font-weight:700; line-height:1.05; letter-spacing:0.01em; }
 
-    .credits-body { max-width: 780px; margin: 0 auto; padding: 5rem 2.5rem 6rem; }
-
-    /* DEDICATION */
-    .dedication { text-align: center; padding: 3rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 4rem; }
-    .ded-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--mid); display: block; margin-bottom: 1.2rem; }
-    .ded-name { font-family: 'Fira Sans Condensed', sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1.4; }
-    .ded-years { font-size: 0.9rem; font-weight: 400; color: var(--mid); display: block; margin-top: 0.15rem; }
-    .ded-and { font-size: 0.85rem; color: var(--mid); margin: 0.9rem 0; }
+    .credits-body { max-width:780px; margin:0 auto; padding:5rem 2.5rem 6rem; }
 
     /* SECTION HEADING */
-    .credits-section { font-family: 'Fira Sans Condensed', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--rule); padding-bottom: 0.5rem; margin: 3.5rem 0 2rem; }
+    .credits-section { font-family:'Fira Sans Condensed',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent); border-bottom:1px solid var(--rule); padding-bottom:0.5rem; margin:3.5rem 0 2rem; }
 
     /* CREDIT ROW */
-    .credit { display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; margin-bottom: 1.5rem; align-items: baseline; }
-    .credit-role { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); padding-top: 0.1rem; }
-    .credit-names { font-size: 1rem; font-weight: 400; line-height: 1.75; color: var(--black); }
-    .credit-names strong { font-weight: 600; }
+    .credit { display:grid; grid-template-columns:200px 1fr; gap:1.5rem; margin-bottom:1.5rem; align-items:baseline; }
+    .credit-role { font-size:0.78rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--mid); padding-top:0.1rem; }
+    .credit-names { font-size:1rem; font-weight:400; line-height:1.75; color:var(--black); }
+    .credit-names strong { font-weight:600; }
 
     /* CONFIRM BADGE */
-    .confirm { display: inline-block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: #fff3cd; color: #7a5c00; border: 1px solid #e0c050; padding: 0.1rem 0.4rem; margin-left: 0.4rem; vertical-align: middle; }
+    .confirm { display:inline-block; font-size:0.62rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; background:#fff3cd; color:#7a5c00; border:1px solid #e0c050; padding:0.1rem 0.4rem; margin-left:0.4rem; vertical-align:middle; }
 
     /* THANK YOU LIST */
-    .thankyou-cols { columns: 2; column-gap: 3rem; font-size: 0.9rem; line-height: 2.1; }
+    .thankyou-cols { columns:2; column-gap:3rem; font-size:0.9rem; line-height:2.1; }
 
     /* SUPPORT BOX */
-    .support-box { background: var(--pale); padding: 2.5rem; margin-top: 1rem; font-size: 0.95rem; line-height: 2; }
+    .support-box { background:var(--pale); padding:2.5rem; margin-top:1rem; font-size:0.95rem; line-height:2; }
 
     /* ARCHIVAL LIST */
-    .archival-list { font-size: 0.9rem; line-height: 1.6; }
-    .archival-list li { list-style: none; border-bottom: 1px solid var(--rule); padding: 0.65rem 0; }
+    .archival-list { font-size:0.9rem; line-height:1.6; }
+    .archival-list li { list-style:none; border-bottom:1px solid var(--rule); padding:0.65rem 0; }
 
     /* COPYRIGHT */
-    .copyright { margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--rule); text-align: center; }
-    .copyright p { font-size: 0.8rem; font-weight: 500; color: var(--mid); max-width: none; margin-bottom: 0.4rem; }
+    .copyright { margin-top:5rem; padding-top:2rem; border-top:1px solid var(--rule); text-align:center; }
+    .copyright p { font-size:0.8rem; font-weight:500; color:var(--mid); max-width:none; margin-bottom:0.4rem; }
 
-    footer { background: var(--black); color: rgba(247,245,241,0.4); padding: 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; border-top: 1px solid #2a2520; }
-    footer a { color: rgba(247,245,241,0.4); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--white); }
-    footer nav { display: flex; gap: 2rem; }
+    .site-footer { background:var(--black); color:rgba(247,245,241,0.4); padding:2.5rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.75rem; font-weight:500; letter-spacing:0.06em; border-top:1px solid #2a2520; }
+    .site-footer a { color:rgba(247,245,241,0.4); text-decoration:none; transition:color 0.2s; }
+    .site-footer a:hover { color:var(--white); }
+    .site-footer-links { display:flex; gap:2rem; }
 
-    @media (max-width: 720px) {
-      .nav-links { display: none; }
-      .credit { grid-template-columns: 1fr; gap: 0.3rem; }
-      .thankyou-cols { columns: 1; }
-      .credits-body { padding: 3rem 1.5rem 4rem; }
-      footer { flex-direction: column; text-align: center; }
+    @media (max-width:720px) {
+      .topnav-links { display:none; }
+      .credit { grid-template-columns:1fr; gap:0.3rem; }
+      .thankyou-cols { columns:1; }
+      .credits-body { padding:3rem 1.5rem 4rem; }
+      .site-footer { flex-direction:column; text-align:center; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-brand">An American Education</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="how-to-watch.html">How to Watch</a></li>
-    <li><a href="credits.html" class="active">Credits</a></li>
-    <li><a href="learn-more.html">Learn More</a></li>
-  </ul>
-</nav>
+<header class="topnav">
+  <a href="index.html" class="topnav-brand">An American Education</a>
+  <div class="topnav-links">
+    <a href="index.html">Home</a>
+    <a href="how-to-watch.html">How to Watch</a>
+    <a href="credits.html" class="active">Credits</a>
+    <a href="learn-more.html">Learn More</a>
+  </div>
+</header>
 
 <div class="page-header">
-  <span class="label">Full Credits</span>
+  <span class="eyebrow">Full Credits</span>
   <h1>An American Education</h1>
 </div>
 
 <div class="credits-body">
 
-  <div class="credit" style="margin-top: 1.5rem;">
+  <div class="credit" style="margin-top:1.5rem;">
     <div class="credit-role">Directed and Narrated by</div>
     <div class="credit-names"><strong>Thai Bonapart</strong></div>
   </div>
 
-  <div class="dedication">
-    <span class="ded-label">Dedicated to</span>
-    <div class="ded-name">James E. "Fergie" Ferguson II<span class="ded-years">1942 – 2025</span></div>
-    <p class="ded-and">and</p>
-    <div class="ded-name">Barbara Turman Ferguson<span class="ded-years">1944 – 2022</span></div>
+  <div class="credit">
+    <div class="credit-role">Dedicated to</div>
+    <div class="credit-names">
+      James E. "Fergie" Ferguson II (1942–2025)<br>
+      and Barbara Turman Ferguson (1944–2022)
+    </div>
   </div>
 
   <div class="credits-section">Producers</div>
@@ -171,7 +157,7 @@
   </div>
   <div class="credit">
     <div class="credit-role">Sound Editorial &amp; Mix</div>
-    <div class="credit-names">C5, NYC — Part of the Soundtrack Group<br><span style="font-size: 0.9rem; color: var(--mid);">Supervising Sound Editor: Paul Hsu</span></div>
+    <div class="credit-names">C5, NYC — Part of the Soundtrack Group<br><span style="font-size:0.9rem;color:var(--mid);">Supervising Sound Editor: Paul Hsu</span></div>
   </div>
 
   <div class="credits-section">Post Production</div>
@@ -227,7 +213,7 @@
 
   <div class="credit">
     <div class="credit-role"></div>
-    <div class="credit-names" style="line-height: 2;">
+    <div class="credit-names" style="line-height:2;">
       The Bonapart and Gore Families<br>
       David Martin<br>Randi Beem<br>Reneisha Black Ferguson<br>Samara Foxx<br>
       Joan Martin<br>Joe B. Martin<br>Ayanna Perry<br>Kevin Poirier<br>
@@ -271,7 +257,7 @@
     Lori Williams<br>Anthony Wright<br>Stephanie Wyatt<br>Peter Yost
   </div>
 
-  <div style="margin-top: 2.5rem; font-size: 0.95rem; line-height: 2;">
+  <div style="margin-top:2.5rem;font-size:0.95rem;line-height:2;">
     Abel Jackson and the River of Life Mural<br>
     The Charlotte Alumnae Chapter of Delta Sigma Theta Sorority, Inc.<br>
     Johnson C. Smith University<br>
@@ -309,31 +295,31 @@
     <li>UPI / Bettmann via Getty Images</li>
   </ul>
 
-  <div style="margin-top: 2.5rem;">
-    <div style="font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.8rem;">Additional Materials Provided by</div>
-    <div style="font-size: 0.9rem; color: var(--mid); line-height: 1.9;">
+  <div style="margin-top:2.5rem;">
+    <div style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);margin-bottom:0.8rem;">Additional Materials Provided by</div>
+    <div style="font-size:0.9rem;color:var(--mid);line-height:1.9;">
       CBS News &nbsp;&middot;&nbsp; Charlotte Museum of History &nbsp;&middot;&nbsp; Charlotte Observer Negative &amp; Yearbook Collections, Robinson-Spangler Carolina Room, Charlotte Mecklenburg Library &nbsp;&middot;&nbsp; Don Sturkey Photographic Materials, North Carolina Collection Photographic Archives, The Wilson Library, UNC Chapel Hill &nbsp;&middot;&nbsp; PBS of North Carolina &nbsp;&middot;&nbsp; Stan Wayman / Life Magazine &nbsp;&middot;&nbsp; Surry County Digital Heritage &nbsp;&middot;&nbsp; WBT/WBTV Corporate Records, Manuscript Collections &amp; WBTV Newsfilm Collection, J. Murrey Atkins Library Special Collections &amp; University Archives, UNC Charlotte
     </div>
-    <div style="margin-top: 1.2rem; font-size: 0.9rem; line-height: 2;">
+    <div style="margin-top:1.2rem;font-size:0.9rem;line-height:2;">
       Ella Dennis &nbsp;&middot;&nbsp; Katherine Scholl Hoskins &nbsp;&middot;&nbsp; Kelly Jessie &nbsp;&middot;&nbsp; Victoria Phelps Keish &nbsp;&middot;&nbsp; Rhonda Long &nbsp;&middot;&nbsp; Susan Evett Miller &nbsp;&middot;&nbsp; Kevin Poirier &nbsp;&middot;&nbsp; Aaron Rankin &nbsp;&middot;&nbsp; Cyndi Soter-O'Neil &nbsp;&middot;&nbsp; Eric Willhelm &nbsp;&middot;&nbsp; Pamela Grundy
     </div>
   </div>
 
   <div class="copyright">
     <p>© 2026 WCHS History Project, Inc.</p>
-    <p style="font-size: 0.72rem; margin-top: 0.4rem;">This motion picture is protected under the laws of the United States and other countries. Any unauthorized use may result in civil liability and criminal prosecution.</p>
+    <p style="font-size:0.72rem;margin-top:0.4rem;">This motion picture is protected under the laws of the United States and other countries. Any unauthorized use may result in civil liability and criminal prosecution.</p>
   </div>
 
 </div>
 
-<footer>
+<footer class="site-footer">
   <span>© 2026 An American Education — West Charlotte History Project</span>
-  <nav>
+  <div class="site-footer-links">
     <a href="index.html">Home</a>
     <a href="how-to-watch.html">How to Watch</a>
     <a href="credits.html">Credits</a>
     <a href="learn-more.html">Learn More</a>
-  </nav>
+  </div>
 </footer>
 </body>
 </html>
